@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/bg1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+.container {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 30px;
+  margin-top: -20px;
+}
+
+.city-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.city-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.search-icon img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+.image {
+  margin-bottom: 5px;
+}
+
+.image img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
+
+.temp {
+  font-size: 64px;
+  font-weight: 300;
+  margin: 6px 0;
+}
+
+.location {
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffbc00;
+}
+
+.country {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.cord {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.cord div {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  min-width: 200px;
+  padding: 10px 10px;
+}
+
+.cord div span:first-child {
+  display: block;
+  font-size: 13px;
+  color: #bdc3c7;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.cord div span:nth-child(2) {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.data-container {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+}
+
+.element {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.element .icon {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+.humidity-percent,
+.wind-percent {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.text {
+  font-size: 12px;
+  color: #bdc3c7;
+}
+
+/* Footer */
+.copyright {
+  position: absolute;
+  bottom: 20px;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.copyright span {
+  color: #ffbc00;
+}
+
+/* State Messages */
+.loading-message,
+.error-message,
+.city-not-found {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #e74c3c;
+}
