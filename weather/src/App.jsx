@@ -11,16 +11,17 @@ import rainIcon from './assets/rain.png';
 import searchIcon from './assets/search.png';
 import snowIcon from './assets/snow.png';
 import windIcon from './assets/wind.svg';
+import seaLevelIcon from './assets/seaLevel.svg';
 import dThunderIcon from './assets/11d.png';
 import nThunderIcon from './assets/11n.png';
-import { meta } from 'eslint-plugin-react-hooks';
 
-const WeatherDetails = ({ icon, temp, city, country, lat, log, humidity, wind }) => {
+const WeatherDetails = ({ icon, temp, city, country, lat, log, humidity, wind, seaLevel, description }) => {
   return (
     <>
       <div className="image">
         <img src={icon} alt="image" />
       </div>
+      <div className="desc">- {description} -</div>
       <div className="temp">{temp}°C</div>
       <div className="location">{city}</div>
       <div className="country">{country}</div>
@@ -45,6 +46,14 @@ const WeatherDetails = ({ icon, temp, city, country, lat, log, humidity, wind })
         </div>
 
         <div className="element">
+          <img src={seaLevelIcon} alt="wind" className='icon' />
+          <div className="data">
+            <div className="wind-percent">{seaLevel} m</div>
+            <div className="text">Sea Level</div>
+          </div>
+        </div>
+
+        <div className="element">
           <img src={windIcon} alt="wind" className='icon' />
           <div className="data">
             <div className="wind-percent">{wind} km/h</div>
@@ -59,18 +68,20 @@ const WeatherDetails = ({ icon, temp, city, country, lat, log, humidity, wind })
 
 function App() {
 
-  let api_key = import.meta.env.VITE_WEATHER_API_KEY;
+  const api_key = import.meta.env.VITE_WEATHER_API_KEY;
   const [text, setText] = useState("Kandy");
 
 
   const [icon, setIcon] = useState(snowIcon);
   const [temp, setTemp] = useState(0);
+  const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [lat, setLat] = useState(0);
   const [log, setLog] = useState(0);
   const [humidity, setHumidity] = useState(0);
   const [wind, setWind] = useState(0);
+  const [seaLevel, setSeaLevel] = useState(0);
 
   const [cityNotFound, setCityNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -111,7 +122,9 @@ function App() {
 
       setHumidity(data.main.humidity);
       setWind(data.wind.speed);
+      setSeaLevel(data.main.sea_level);
       setTemp(Math.floor(data.main.temp));
+      setDescription(data.weather[0].description);
       setCity(data.name);
       setCountry(data.sys.country);
       setLat(data.coord.lat)
@@ -163,12 +176,14 @@ function App() {
         {!loading && !cityNotFound && < WeatherDetails
           icon={icon}
           temp={temp}
+          description={description}
           city={city}
           country={country}
           lat={lat}
           log={log}
           humidity={humidity}
           wind={wind}
+          seaLevel={seaLevel}
         />}
 
         {loading && <div className="loading-message">Loading...</div>}
