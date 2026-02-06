@@ -13,6 +13,7 @@ import snowIcon from './assets/snow.png';
 import windIcon from './assets/wind.svg';
 import dThunderIcon from './assets/11d.png';
 import nThunderIcon from './assets/11n.png';
+import { meta } from 'eslint-plugin-react-hooks';
 
 const WeatherDetails = ({ icon, temp, city, country, lat, log, humidity, wind }) => {
   return (
@@ -58,7 +59,7 @@ const WeatherDetails = ({ icon, temp, city, country, lat, log, humidity, wind })
 
 function App() {
 
-  let api_key = "f52a0f3184093c2d178ab066ad288448";
+  let api_key = import.meta.env.VITE_WEATHER_API_KEY;
   const [text, setText] = useState("Kandy");
 
 
